@@ -1,0 +1,16 @@
+site_name: Calculation Docs
+
+theme:
+  name: "material"
+nav:
+# rest of the navigation...
+- Code Reference: reference/ 
+plugins:
+- search  # 
+- gen-files:
+    scripts:
+    - docs/gen_ref_pages.py
+- literate-nav:
+    nav_file: SUMMARY.md
+- section-index
+- mkdocstrings
