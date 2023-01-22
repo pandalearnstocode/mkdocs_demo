@@ -194,6 +194,48 @@ git remote add origin https://github.com/pandalearnstocode/mkdocs_demo.git
 git push -u origin develop
 ```
 
+
+## __Install Poetry__
+
+```bash
+# Install poetry
+curl -sSL https://install.python-poetry.org | python3 -
+nano ~/.bashrc
+export PATH="/home/pandalearnstocode/.local/bin:$PATH"
+source ~/.bashrc
+poetry --version
+```
+
+## __Create a new poetry project__
+
+```bash
+poetry init
+poetry add toml-cli mike
+```
+
+```bash
+version=$(toml get --toml-path pyproject.toml tool.poetry.version)
+echo "${version}"
+mike deploy --push --update-aliases ${version} latest
+mike set-default --push latest
+```
+
+```bash
+poetry version patch
+version=$(toml get --toml-path pyproject.toml tool.poetry.version)
+echo "${version}"
+mike deploy --push --update-aliases ${version} latest
+```
+
+```yml
+site_name: My Docs
+theme:
+  name: material
+extra:
+  version:
+    provider: mike
+```
+
 ## __References__
 
 * [MKDocs for developers wiki](https://www.mkdocs.org/)
@@ -202,3 +244,9 @@ git push -u origin develop
 * [MKdocstring recipes to automatically parse docstrings](https://mkdocstrings.github.io/recipes/)
 * [autoDocstring - Python Docstring Generator](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
 * [Demo repository](https://github.com/pandalearnstocode/mkdocs_demo)
+* [How To Install Poetry to Manage Python Dependencies on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-poetry-to-manage-python-dependencies-on-ubuntu-22-04)
+* [Setting up versioning](https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/#versioning)
+* [Demo: How to set up versioning](https://github.com/squidfunk/mkdocs-material-example-versioning)
+* [](https://stackoverflow.com/questions/4651437/how-do-i-set-a-variable-to-the-output-of-a-command-in-bash)
+* [](https://pypi.org/project/toml-cli/)
+* [](https://pypi.org/project/mike/)

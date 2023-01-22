@@ -2,6 +2,9 @@ site_name: Calculation Docs
 
 theme:
   name: "material"
+extra:
+  version:
+    provider: mike
 nav:
 # rest of the navigation...
 - Code Reference: reference/ 
