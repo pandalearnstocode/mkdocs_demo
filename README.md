@@ -202,3 +202,4 @@ git push -u origin develop
 * [MKdocstring recipes to automatically parse docstrings](https://mkdocstrings.github.io/recipes/)
 * [autoDocstring - Python Docstring Generator](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
 * [Demo repository](https://github.com/pandalearnstocode/mkdocs_demo)
+* [Video Walkthough](https://youtu.be/WV1fcA3YGZs)
