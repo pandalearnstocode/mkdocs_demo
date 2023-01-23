@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mkdocs-demo"
-version = "0.0.2"
+version = "0.0.3"
 description = ""
 authors = ["Aritra Biswas <pandalearnstocode@gmail.com>"]
 readme = "README.md"
