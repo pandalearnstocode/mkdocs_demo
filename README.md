@@ -235,6 +235,53 @@ extra:
   version:
     provider: mike
 ```
+## __Build and publish developers wiki__
+
+```yml
+name: ci 
+on:
+  push:
+    branches:
+      - develop
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      - name: Install library
+        run: poetry install --no-interaction
+      - name: Deployment setup
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com 
+      - name: Deploy document
+        run: |
+          echo "RELEASE_VERSION=$(toml get --toml-path pyproject.toml tool.poetry.version)" >> $GITHUB_ENV
+          echo "RELEASE_TAG_VERSION=${RELEASE_VERSION}"
+          poetry run mike deploy --push --update-aliases ${RELEASE_VERSION} latest
+```
 
 ## __References__
 
