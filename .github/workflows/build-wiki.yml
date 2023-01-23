@@ -36,6 +36,5 @@ jobs:
           git config user.email github-actions@github.com 
       - name: Deploy document
         run: |
-          echo "RELEASE_VERSION=$(poetry run toml get --toml-path pyproject.toml tool.poetry.version)" >> $GITHUB_ENV
-          echo "RELEASE_TAG_VERSION=${RELEASE_VERSION}"
-          poetry run mike deploy --push --update-aliases ${RELEASE_TAG_VERSION} latest
+          RELEASE_VERSION=$(poetry run toml get --toml-path pyproject.toml tool.poetry.version)
+          poetry run mike deploy --push --update-aliases ${RELEASE_VERSION} latest
