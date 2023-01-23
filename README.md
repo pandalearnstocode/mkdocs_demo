@@ -278,7 +278,7 @@ jobs:
           git config user.email github-actions@github.com 
       - name: Deploy document
         run: |
-          echo "RELEASE_VERSION=${poetry run toml get --toml-path pyproject.toml tool.poetry.version}" >> $GITHUB_ENV
+          echo "RELEASE_VERSION=$(poetry run toml get --toml-path pyproject.toml tool.poetry.version)" >> $GITHUB_ENV
           echo "RELEASE_TAG_VERSION=${RELEASE_VERSION}"
           poetry run mike deploy --push --update-aliases ${RELEASE_TAG_VERSION} latest
 ```
@@ -298,3 +298,4 @@ jobs:
 * [Command line interface to read and write keys/values to/from toml files](https://pypi.org/project/toml-cli/)
 * [Manage multiple versions of your MkDocs-powered documentation](https://pypi.org/project/mike/)
 * [Releasing and versioning](https://py-pkgs.org/07-releasing-versioning.html)
+* [Sample mike deploy pipeline](https://github.com/SatelCreative/spylib/blob/main/.github/workflows/docs.yml)
