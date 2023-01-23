@@ -280,7 +280,7 @@ jobs:
         run: |
           echo "RELEASE_VERSION=$(toml get --toml-path pyproject.toml tool.poetry.version)" >> $GITHUB_ENV
           echo "RELEASE_TAG_VERSION=${RELEASE_VERSION}"
-          poetry run mike deploy --push --update-aliases ${RELEASE_VERSION} latest
+          poetry run mike deploy --push --update-aliases ${RELEASE_TAG_VERSION} latest
 ```
 
 ## __References__
