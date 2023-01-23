@@ -1,16 +1,18 @@
-# __Write documentation for your code with mkdocs__
+# __Write documentation for your code with `mkdocs`__
 
-## __Steps__
+## __Docstring parsing__
 
-1. Create a new conda environment named `dev_docs`
-2. Activate the environment
-3. Install the Python packages `mkdocs`, `mkdocstrings`, `mkdocs-material`, `mkdocs-gen-files`, `mkdocs-literate-nav` and `mkdocs-section-index`
-4. Create a new mkdocs project
-5. Edit the `mkdocs.yml` file
-6. Create the `docs/gen_ref_pages.py` file
-7. Create the `src/project` folder
-8. Create the `src/project/amet.py` file
-9. Create the `src/project/dolor.py` file
+### __Steps__
+
+01. Create a new conda environment named `dev_docs`
+02. Activate the environment
+03. Install the Python packages `mkdocs`, `mkdocstrings`, `mkdocs-material`, `mkdocs-gen-files`, `mkdocs-literate-nav` and `mkdocs-section-index`
+04. Create a new mkdocs project
+05. Edit the `mkdocs.yml` file
+06. Create the `docs/gen_ref_pages.py` file
+07. Create the `src/project` folder
+08. Create the `src/project/amet.py` file
+09. Create the `src/project/dolor.py` file
 10. Create the `src/project/__init__.py` file
 11. Build the documentation
 12. Serve the documentation
@@ -21,8 +23,20 @@
 17. Add the files to the git repository
 18. Commit the files to the git repository
 19. Push the files to the git repository
+20. Install Poetry and add poetry path in `~/.bashrc` and validate with `poetry --version`
+21. Create poetry project
+22. Add and install dependencies
+23. Extract version from `pyproject.toml` and make inital release
+24. Push files to gh-pages branch
+25. bump version
+26. Push files to gh-pages branch
+27. Add github action to build and deploy documentation
+28. Bump version
+29. Push files to develop branch
+30. validate changes in github pages
 
-## Code snippets
+
+### __Code snippets__
 
 ```bash
 # Create a new conda environment and install the packages
@@ -38,16 +52,13 @@ mkdocs new .
 
 ```yml
 # Update the mkdocs.yml file
-
 site_name: Calculation Docs
-
 theme:
   name: "material"
 nav:
-# rest of the navigation...
 - Code Reference: reference/ 
 plugins:
-- search  # 
+- search
 - gen-files:
     scripts:
     - docs/gen_ref_pages.py
@@ -62,11 +73,8 @@ plugins:
 """Generate the code reference pages and navigation."""
 
 from pathlib import Path
-
 import mkdocs_gen_files
-
 nav = mkdocs_gen_files.Nav()
-
 for path in sorted(Path("src").rglob("*.py")):
     module_path = path.relative_to("src").with_suffix("")
     doc_path = path.relative_to("src").with_suffix(".md")
@@ -194,8 +202,9 @@ git remote add origin https://github.com/pandalearnstocode/mkdocs_demo.git
 git push -u origin develop
 ```
 
+## __Manage document version mike__
 
-## __Install Poetry__
+### __Install Poetry__
 
 ```bash
 # Install poetry
@@ -206,7 +215,7 @@ source ~/.bashrc
 poetry --version
 ```
 
-## __Create a new poetry project__
+### __Create a new poetry project__
 
 ```bash
 poetry init
@@ -235,6 +244,7 @@ extra:
   version:
     provider: mike
 ```
+
 ## __Build and publish developers wiki with `mike`, `poetry` and `GitHub actions`__
 
 ```yml
