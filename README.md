@@ -307,6 +307,62 @@ jobs:
           poetry run mike deploy --push --update-aliases ${RELEASE_VERSION} latest
 ```
 
+
+```bash
+cd docs
+mkdir stylesheets
+mkdir javascripts
+cd stylesheets
+touch extra.css
+cd ../javascripts
+touch extra.js
+```
+
+```yml
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+```
+
+
+
+```css
+@media only screen and (min-width: 76.25em) {
+    .md-main__inner {
+      max-width: none;
+    }
+    .md-sidebar--primary {
+      left: 0;
+    }
+    .md-sidebar--secondary {
+      right: 0;
+      margin-left: 0;
+      -webkit-transform: none;
+      transform: none;   
+    }
+  }
+```
+
+```bash
+poetry add mkdocs-enumerate-headings-plugin mkdocs-git-authors-plugin mkdocs-git-revision-date-localized-plugin
+```
+
+```yml
+plugins:
+- search
+- gen-files:
+    scripts:
+    - docs/gen_ref_pages.py
+- literate-nav:
+    nav_file: SUMMARY.md
+- section-index
+- mkdocstrings
+- enumerate-headings
+- git-authors
+- git-revision-date-localized
+```
+
 ## __References__
 
 * [MKDocs for developers wiki](https://www.mkdocs.org/)
@@ -324,3 +380,4 @@ jobs:
 * [Releasing and versioning](https://py-pkgs.org/07-releasing-versioning.html)
 * [Sample mike deploy pipeline](https://github.com/SatelCreative/spylib/blob/main/.github/workflows/docs.yml)
 * [Poetry cache GitHub actions](https://gist.github.com/gh640/233a6daf68e9e937115371c0ecd39c61)
+* [Adding assets to MKDocs material theme](https://squidfunk.github.io/mkdocs-material/customization/)

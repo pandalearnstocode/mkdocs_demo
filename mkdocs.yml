@@ -9,7 +9,7 @@ nav:
 # rest of the navigation...
 - Code Reference: reference/ 
 plugins:
-- search  # 
+- search
 - gen-files:
     scripts:
     - docs/gen_ref_pages.py
@@ -17,3 +17,10 @@ plugins:
     nav_file: SUMMARY.md
 - section-index
 - mkdocstrings
+- enumerate-headings
+- git-authors
+- git-revision-date-localized
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
