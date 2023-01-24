@@ -370,6 +370,13 @@ theme:
   name: "material"
   logo: 'images/logo.png'
 ```
+
+
+```yml
+copyright: Copyright &copy; 2016 - 2020 Martin Donath
+extra:
+  generator: false
+```
 ## __References__
 
 * [MKDocs for developers wiki](https://www.mkdocs.org/)

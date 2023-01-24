@@ -24,3 +24,6 @@ extra_css:
   - stylesheets/extra.css
 extra_javascript:
   - javascripts/extra.js
+copyright: Copyright &copy; 2016 - 2020 Martin Donath
+extra:
+  generator: false
