@@ -362,6 +362,8 @@ plugins:
 - git-authors
 - git-revision-date-localized
   fallback_to_build_date: true
+  exclude:
+    - index.md
 ```
 
 ## __References__

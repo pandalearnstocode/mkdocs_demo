@@ -21,6 +21,8 @@ plugins:
 - git-authors
 - git-revision-date-localized
   fallback_to_build_date: true
+  exclude:
+    - index.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
