@@ -360,7 +360,7 @@ plugins:
 - mkdocstrings
 - enumerate-headings
 - git-authors
-- git-revision-date-localized
+- git-revision-date-localized:
   fallback_to_build_date: true
   exclude:
     - index.md
