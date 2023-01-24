@@ -3,6 +3,7 @@ site_name: Calculation Docs
 theme:
   name: "material"
   logo: 'images/logo.png'
+  favicon: "images/favicon.png"
 extra:
   version:
     provider: mike

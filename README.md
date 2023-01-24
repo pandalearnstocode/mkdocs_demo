@@ -396,3 +396,4 @@ extra:
 * [Poetry cache GitHub actions](https://gist.github.com/gh640/233a6daf68e9e937115371c0ecd39c61)
 * [Adding assets to MKDocs material theme](https://squidfunk.github.io/mkdocs-material/customization/)
 * [best-of-mkdocs](https://github.com/pawamoy/best-of-mkdocs)
+* [customizing MkDocs](http://fabacademy.org/2021/labs/bottrop/students/lars-mattern/assignments/01.%20Project%20management/5_mkdocs/)
