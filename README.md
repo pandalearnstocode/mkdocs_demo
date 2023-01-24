@@ -361,6 +361,7 @@ plugins:
 - enumerate-headings
 - git-authors
 - git-revision-date-localized
+  fallback_to_build_date: true
 ```
 
 ## __References__
