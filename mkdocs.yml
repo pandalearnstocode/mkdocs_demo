@@ -2,6 +2,7 @@ site_name: Calculation Docs
 
 theme:
   name: "material"
+  logo: 'images/logo.png'
 extra:
   version:
     provider: mike
@@ -19,10 +20,6 @@ plugins:
 - mkdocstrings
 - enumerate-headings
 - git-authors
-- git-revision-date-localized:
-  fallback_to_build_date: true
-  exclude:
-    - index.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

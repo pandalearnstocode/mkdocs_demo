@@ -360,12 +360,16 @@ plugins:
 - mkdocstrings
 - enumerate-headings
 - git-authors
-- git-revision-date-localized:
-  fallback_to_build_date: true
-  exclude:
-    - index.md
 ```
 
+
+Create `docs/images/logo.png` and update `mkdocs.yml` with
+
+```yml
+theme:
+  name: "material"
+  logo: 'images/logo.png'
+```
 ## __References__
 
 * [MKDocs for developers wiki](https://www.mkdocs.org/)
