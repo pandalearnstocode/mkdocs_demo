@@ -2,9 +2,7 @@
 
 ## __Docstring parsing__
 
-### __Steps__
-
-01. Create a new conda environment named `dev_docs`
+01. Create a new conda environment and install the packages
 02. Activate the environment
 03. Install the Python packages `mkdocs`, `mkdocstrings`, `mkdocs-material`, `mkdocs-gen-files`, `mkdocs-literate-nav` and `mkdocs-section-index`
 04. Create a new mkdocs project
@@ -33,25 +31,40 @@
 27. Add github action to build and deploy documentation
 28. Bump version
 29. Push files to develop branch
-30. validate changes in github pages
+30. Validate changes in github pages
 
 
-### __Code snippets__
+##### __Create a new conda environment and install the packages__
 
 ```bash
-# Create a new conda environment and install the packages
 conda create -n dev_docs python=3.8 -y
 conda activate dev_docs
 pip install mkdocs "mkdocstrings[python]" mkdocs-material mkdocs-gen-files mkdocs-literate-nav mkdocs-section-index
 ```
 
+##### __Create a new mkdocs project__
+
 ```bash
-# Create a new mkdocs project
 mkdocs new .
+mkdocs serve
 ```
 
+##### __Update MKDocs theme__
+
 ```yml
-# Update the mkdocs.yml file
+site_name: Calculation Docs
+theme:
+  name: "material"
+```
+
+```bash
+mkdocs serve
+```
+
+##### __Update `mkdocs.yml` for automatic docstring parsing__
+
+
+```yml
 site_name: Calculation Docs
 theme:
   name: "material"
@@ -68,8 +81,9 @@ plugins:
 - mkdocstrings
 ```
 
+##### __Create and update `docs/gen_ref_pages.py`__
+
 ```python
-# Create and update docs/gen_ref_pages.py
 """Generate the code reference pages and navigation."""
 
 from pathlib import Path
@@ -96,8 +110,9 @@ with mkdocs_gen_files.open("reference/SUMMARY.md", "w") as nav_file:
     nav_file.writelines(nav.build_literate_nav())
 ```
 
+##### __Create and update `src/project/amet.py`__
+
 ```python
-# Create and update src/project/amet.py
 
 def amet(name: str)->str:
     """Give a name
@@ -130,33 +145,33 @@ class MyCalss:
         return 2 * self.alpha
 ```
 
-```python
-# Create and update src/project/dolor.py
+##### __Create and update `src/project/dolor.py`__
 
+```python
 def dolor():
     """Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."""
     pass
 ```
 
-```python
-# Create and update src/project/__init__.py
+##### __Create and update `src/project/__init__.py`__
 
+```python
 """This is project module"""
 ```
 
+##### __Build and serve wiki__
+
 ```bash
-# Build the documentation
 mkdocs build
 ```
 
 ```bash
-# Serve the documentation
 mkdocs serve
 ```
 
+##### __Directory structure of the wiki__
 
 ```bash
-# Validate directory structure
 .
 ├── docs
 │   ├── gen_ref_pages.py
@@ -175,25 +190,18 @@ mkdocs serve
 5 directories, 8 files
 ```
 
+##### __Save dependencies as `requirements.txt` & `environment.yml`__
+
 ```bash
-# Freeze the environment
 pip list --format=freeze > requirements.txt
-```
-
-
-```bash
-# Create the environment.yml file
 conda env export > environment.yml
-```
-
-```bash
-# Deactivate the environment
 conda deactivate
 ```
 
 
+##### __Push code to GitHub__
+
 ```bash
-# Create a new git repository
 git init
 git add .
 git commit -m "initial commit"
@@ -222,19 +230,7 @@ poetry init
 poetry add toml-cli mike
 ```
 
-```bash
-version=$(toml get --toml-path pyproject.toml tool.poetry.version)
-echo "${version}"
-mike deploy --push --update-aliases ${version} latest
-mike set-default --push latest
-```
-
-```bash
-poetry version patch
-version=$(toml get --toml-path pyproject.toml tool.poetry.version)
-echo "${version}"
-mike deploy --push --update-aliases ${version} latest
-```
+##### __Update `mkdocs.yml`__
 
 ```yml
 site_name: My Docs
@@ -245,7 +241,31 @@ extra:
     provider: mike
 ```
 
+##### __Extract library version and publish inital release in GitHub pages__
+
+```bash
+version=$(toml get --toml-path pyproject.toml tool.poetry.version)
+echo "${version}"
+mike deploy --push --update-aliases ${version} latest
+mike set-default --push latest
+```
+
+##### __Update library version and publish subsequent release__
+
+```bash
+poetry version patch
+version=$(toml get --toml-path pyproject.toml tool.poetry.version)
+echo "${version}"
+mike deploy --push --update-aliases ${version} latest
+```
+
 ## __Build and publish developers wiki with `mike`, `poetry` and `GitHub actions`__
+
+##### __Create required github actions file__
+
+Create a new github file here `.github/workflows/build-wiki.yml`.
+
+##### __Update `build-wiki.yml`__
 
 ```yml
 name: ci 
