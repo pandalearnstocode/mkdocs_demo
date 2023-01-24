@@ -1,6 +1,6 @@
 # __Write documentation for your code with `mkdocs`__
 
-## __Docstring parsing__
+## __Docstring parsing using `mkdicstring`__
 
 01. Create a new conda environment and install the packages
 02. Activate the environment
@@ -21,17 +21,6 @@
 17. Add the files to the git repository
 18. Commit the files to the git repository
 19. Push the files to the git repository
-20. Install Poetry and add poetry path in `~/.bashrc` and validate with `poetry --version`
-21. Create poetry project
-22. Add and install dependencies
-23. Extract version from `pyproject.toml` and make inital release
-24. Push files to gh-pages branch
-25. bump version
-26. Push files to gh-pages branch
-27. Add github action to build and deploy documentation
-28. Bump version
-29. Push files to develop branch
-30. Validate changes in github pages
 
 
 ##### __Create a new conda environment and install the packages__
@@ -210,7 +199,19 @@ git remote add origin https://github.com/pandalearnstocode/mkdocs_demo.git
 git push -u origin develop
 ```
 
-## __Manage document version mike__
+## __Manage document version `mike`__
+
+01. Install Poetry and add poetry path in `~/.bashrc` and validate with `poetry --version`
+02. Create poetry project
+03. Add and install dependencies
+04. Extract version from `pyproject.toml` and make inital release
+05. Push files to gh-pages branch
+06. bump version
+07. Push files to gh-pages branch
+08. Add github action to build and deploy documentation
+09. Bump version
+10. Push files to develop branch
+11. Validate version changes in github pages
 
 ### __Install Poetry__
 
