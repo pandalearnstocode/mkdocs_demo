@@ -388,3 +388,4 @@ theme:
 * [Sample mike deploy pipeline](https://github.com/SatelCreative/spylib/blob/main/.github/workflows/docs.yml)
 * [Poetry cache GitHub actions](https://gist.github.com/gh640/233a6daf68e9e937115371c0ecd39c61)
 * [Adding assets to MKDocs material theme](https://squidfunk.github.io/mkdocs-material/customization/)
+* [best-of-mkdocs](https://github.com/pawamoy/best-of-mkdocs)
